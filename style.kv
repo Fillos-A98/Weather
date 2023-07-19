@@ -1,0 +1,19 @@
+<HomeScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20sp"
+
+        MDTextField:
+            id: "city"
+            hint_text: "Enter City"
+            mode: "fill"
+            size_hint: (0.9, None)
+            pos_hint: {"center_x": 0.5}
+
+        MDBottomAppBar:
+            MDTopAppBar:
+                icon: "git"
+                title: "<- Menu"
+                type: "bottom"
+                left_action_items: [["menu", lambda x: x]]
+                on_action_button: root.sity_recvest()

@@ -1,10 +1,47 @@
+<WeatherCard>:
+    pading = 5
+    size_hint = 0.8, 0.8
+    MDBoxLayout:
+        orientation = 'vertical'
+        MDLabel:
+            id: weather_text
+            text: "Погода"
+            halign: "center"
+            font_style: "H6"
+        MDLabel:
+            id: temp_text
+            text: ""
+            halign: "center"
+            font_style: "H4"
+        MDLabel:
+            id: rain_text
+            text: ""
+            halign: "center"
+            font_style: "Subtitle2"
+        MDLabel:
+            id: rain_pop_text
+            text: ""
+            halign: "center"
+            font_style: "Subtitle2"
+        MDLabel:
+            id: wind_speed_text
+            text: ""
+            halign: "center"
+            font_style: "Subtitle2"
+
+
 <HomeScreen>:
     MDBoxLayout:
         orientation: "vertical"
         spacing: "20sp"
 
+        MDCarousel:
+            id: weather_carousel
+            direction: "right"
+            paddings: 10
+
         MDTextField:
-            id: "city"
+            id: city
             hint_text: "Enter City"
             mode: "fill"
             size_hint: (0.9, None)
@@ -12,8 +49,8 @@
 
         MDBottomAppBar:
             MDTopAppBar:
-                icon: "git"
-                title: "<- Menu"
+                icon: "map-marker-outline"
+                title: "< Menu"
                 type: "bottom"
                 left_action_items: [["menu", lambda x: x]]
-                on_action_button: root.sity_recvest()
+                on_action_button: root.city_request()

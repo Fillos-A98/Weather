@@ -1,13 +1,21 @@
 <WeatherCard>:
     padding: 15
     size_hint: 0.8, 0.8
+    pos_hint: {"center_x": 0.5}
     MDBoxLayout:
         orientation: 'vertical'
         MDLabel:
-            id: data_text
+            id: date_text
             text: ""
             halign: "center"
             font_style: "H5"
+        AsyncImage:
+            id: icon
+            fit_mode: "contain"
+            size_hint: (None, None)
+            height: '70sp'
+            width: '70sp'
+            pos_hint: {"center_x": 0.5}
         MDLabel:
             id: weather_text
             text: "Погода"
@@ -19,19 +27,19 @@
             halign: "center"
             font_style: "H4"
         MDLabel:
-            id: rain_text
-            text: ""
-            halign: "center"
-            font_style: "Subtitle2"
-        MDLabel:
             id: rain_pop_text
             text: ""
-            halign: "center"
+            halign: "left"
+            font_style: "Subtitle2"
+        MDLabel:
+            id: rain_text
+            text: ""
+            halign: "left"
             font_style: "Subtitle2"
         MDLabel:
             id: wind_speed_text
             text: ""
-            halign: "center"
+            halign: "left"
             font_style: "Subtitle2"
 
 
@@ -39,23 +47,27 @@
     MDBoxLayout:
         orientation: "vertical"
         spacing: "20sp"
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: ["0sp", "20sp"]
+            size_hint: (1, 0.8)
+            MDTextField:
+                id: city
+                hint_text: "Enter City"
+                mode: "fill"
+                size_hint: (0.9, None)
+                pos_hint: {"center_x": 0.5}
 
-        MDCarousel:
-            id: weather_carousel
-            direction: "right"
-            paddings: 10
-
-        MDTextField:
-            id: city
-            hint_text: "Enter City"
-            mode: "fill"
-            size_hint: (0.9, None)
-            pos_hint: {"center_x": 0.5}
+            MDCarousel:
+                id: weather_carousel
+                direction: "right"
+                padding: 10
 
         MDBottomAppBar:
             MDTopAppBar:
                 icon: "map-marker-outline"
                 title: "< Menu"
                 type: "bottom"
+                mode: "end"
                 left_action_items: [["menu", lambda x: x]]
                 on_action_button: root.city_request()
